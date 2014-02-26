@@ -94,6 +94,7 @@ class PlgSystemDebug extends JPlugin
 
 		// Skip the plugin if debug is off
 		$app = JFactory::getApplication();
+
 		if ($app->getCfg('debug_lang') == '0' && $app->getCfg('debug') == '0')
 		{
 			return;
@@ -198,10 +199,10 @@ class PlgSystemDebug extends JPlugin
 
 		// No debug for Safari and Chrome redirection.
 		if (strstr(strtolower($_SERVER['HTTP_USER_AGENT']), 'webkit') !== false
-			&& substr($contents, 0, 50) == '<html><head><meta http-equiv="refresh" content="0;'
-		)
+			&& substr($contents, 0, 50) == '<html><head><meta http-equiv="refresh" content="0;')
 		{
 			echo $contents;
+
 			return;
 		}
 
@@ -248,6 +249,11 @@ class PlgSystemDebug extends JPlugin
 			if ($this->params->get('logs', 1) && !empty($this->logEntries))
 			{
 				$html[] = $this->display('logs');
+			}
+
+			if ($this->params->get('layouts', 1))
+			{
+				$html[] = $this->display('layouts');
 			}
 		}
 
@@ -1353,7 +1359,8 @@ class PlgSystemDebug extends JPlugin
 					$this->sqlShowProfileEach[0] = array(array('Error' => 'MySql have_profiling = off'));
 				}
 			}
-			catch (Exception $e) {
+			catch (Exception $e)
+			{
 				$this->sqlShowProfileEach[0] = array(array('Error' => $e->getMessage()));
 			}
 		}
@@ -1373,7 +1380,8 @@ class PlgSystemDebug extends JPlugin
 						$db->setQuery('EXPLAIN ' . ($dbVersion56 ? 'EXTENDED ' : '') . $query);
 						$this->explains[$k] = $db->loadAssocList();
 					}
-					catch (Exception $e) {
+					catch (Exception $e)
+					{
 						$this->explains[$k] = array(array('Error' => $e->getMessage()));
 					}
 				}
@@ -1443,6 +1451,22 @@ class PlgSystemDebug extends JPlugin
 		$html[] = '</ul>';
 
 		return implode('', $html);
+	}
+
+	/**
+	 * Display layouts debug information
+	 *
+	 * @return  string
+	 *
+	 * @since   3.3
+	 */
+	protected function displayLayouts()
+	{
+		return $this->getRenderer('layouts')->render(
+			array(
+				'stats' => JLayoutFile::getStats()
+			)
+		);
 	}
 
 	/**

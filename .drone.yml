@@ -9,7 +9,6 @@ pipeline:
       - echo $(date)
       - /root/.composer/vendor/bin/phpcs --report=full --extensions=php -p --standard=build/phpcs/Joomla .
       - echo $(date)
-
   javascript:
     image: joomlaprojects/docker-systemtests:latest
     commands:
@@ -25,3 +24,19 @@ pipeline:
       - cd ../..
       - tests/javascript/node_modules/karma/bin/karma start karma.conf.js --single-run
       - echo $(date)
+
+  # PHP Unit tests on different versions (Matrix)
+  phpunit:
+    image: ${IMAGE}
+        commands:
+          - echo $(date)
+          - phpunit .
+          - echo $(date)
+
+matrix:
+  IMAGE:
+    - joomlaprojects/docker-php53
+    - joomlaprojects/docker-php54
+    - joomlaprojects/docker-php55
+    - joomlaprojects/docker-php56
+    - joomlaprojects/docker-php70

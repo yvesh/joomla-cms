@@ -1,10 +1,11 @@
-pipeline:
-  clone:
+clone:
     image: plugins/git
     depth: 1
 
+pipeline:
   phpcs:
     image: joomlaprojects/docker-phpcs
+    group: test
     commands:
       - echo $(date)
       - /root/.composer/vendor/bin/phpcs --report=full --extensions=php -p --standard=build/phpcs/Joomla .
@@ -12,6 +13,7 @@ pipeline:
 
   javascript:
     image: joomlaprojects/docker-systemtests:latest
+    group: test
     commands:
       - echo $(date)
       - apt-get install nodejs npm
@@ -25,4 +27,3 @@ pipeline:
       - cd ../..
       - tests/javascript/node_modules/karma/bin/karma start karma.conf.js --single-run
       - echo $(date)
-

@@ -29,10 +29,10 @@ pipeline:
   # PHP Unit tests on different versions (Matrix)
   phpunit:
     image: ${IMAGE}
-        commands:
-          - echo $(date)
-          - phpunit .
-          - echo $(date)
+    commands:
+      - echo $(date)
+      - phpunit .
+      - echo $(date)
 
 matrix:
   IMAGE:

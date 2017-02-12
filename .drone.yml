@@ -27,3 +27,11 @@ pipeline:
       - cd ../..
       - tests/javascript/node_modules/karma/bin/karma start karma.conf.js --single-run
       - echo $(date)
+
+phpcs:
+  image: joomlaprojects/docker-php70
+  group: test
+  commands:
+    - echo $(date)
+    - phpunit .
+    - echo $(date)

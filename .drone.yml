@@ -36,8 +36,8 @@ pipeline:
 
 matrix:
   IMAGE:
-    - joomlaprojects/docker-php53
-    - joomlaprojects/docker-php54
-    - joomlaprojects/docker-php55
-    - joomlaprojects/docker-php56
-    - joomlaprojects/docker-php70
+    - joomlaprojects/docker-php53:latest
+    - joomlaprojects/docker-php54:latest
+    - joomlaprojects/docker-php55:latest
+    - joomlaprojects/docker-php56:latest
+    - joomlaprojects/docker-php70:latest

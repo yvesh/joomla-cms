@@ -9,6 +9,7 @@ pipeline:
       - echo $(date)
       - /root/.composer/vendor/bin/phpcs --report=full --extensions=php -p --standard=build/phpcs/Joomla .
       - echo $(date)
+
   javascript:
     image: joomlaprojects/docker-systemtests:latest
     commands:

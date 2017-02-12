@@ -24,7 +24,7 @@ javascript:
     - tests/javascript/node_modules/karma/bin/karma start karma.conf.js --single-run
     - echo $(date)
 
-# PHP Unit tests on different versions
+# PHP Unit tests on different versions (Matrix)
 pipeline:
   phpunit:
     image: ${IMAGE}

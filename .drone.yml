@@ -1,10 +1,11 @@
-clone:
-  image: plugins/git
-  depth: 1
+pipeline:
+  clone:
+    image: plugins/git
+    depth: 1
 
-phpunit:
-  image: joomlaprojects/docker-php54:latest
-  commands:
-    - echo $(date)
-    - phpunit .
-    - echo $(date)
+  phpunit:
+    image: joomlaprojects/docker-php54:latest
+    commands:
+      - echo $(date)
+      - phpunit .
+      - echo $(date)

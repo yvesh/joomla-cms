@@ -343,7 +343,7 @@ class JApplicationWebTest extends TestCase
 	 */
 	public function testGetInstanceForUnexistingClass()
 	{
-		JApplicationWeb::getInstance('Foo');
+		JApplicationWeb::getInstance('\\Foo');
 	}
 
 	/**

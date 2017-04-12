@@ -120,7 +120,7 @@ abstract class JFactory
 	 * @param   string     $prefix     Application prefix
 	 * @param   Container  $container  An optional dependency injection container to inject into the application.
 	 *
-	 * @return  \Joomla\CMS\Application\CmsApplication object
+	 * @return  \Joomla\CMS\Application\CMSApplication object
 	 *
 	 * @see     JApplication
 	 * @since   11.1

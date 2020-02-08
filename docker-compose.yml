@@ -3,8 +3,6 @@ version: '3.1'
 services: 
     joomla:
         image: gitpod/workspace-full:latest
-        
-
 
     mysql:
         image: mysql:5.7
@@ -12,6 +10,6 @@ services:
             - "3306:3306"
         environment:
             - MYSQL_ROOT_PASSWORD=joomla
-            - MYSQL_DATABASE=joomla
+            - MYSQL_DATABASE=joomla_db
         volumes:
             - "./conf.d:/etc/mysql/conf.d:ro"

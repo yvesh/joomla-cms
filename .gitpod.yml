@@ -2,7 +2,7 @@ image: gitpod/workspace-full:latest
 
 tasks:
     - init: composer --no-dev --ignore-platform-reqs install && npm i
-      task: php -S 127.0.0.1:8080
+      command: php -S 127.0.0.1:8080
 
 ports:
     - port: 8080

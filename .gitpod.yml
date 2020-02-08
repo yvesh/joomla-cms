@@ -1,3 +1,5 @@
+image: gitpod/workspace-full:latest
+
 tasks:
     - init: composer install && npm i
       task: php -S 127.0.0.1:8080
